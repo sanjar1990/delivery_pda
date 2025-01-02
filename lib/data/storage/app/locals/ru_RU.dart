@@ -3,7 +3,7 @@ import 'package:delivery_pda/data/tools/strings/string.dart';
 
 
 Map<String, String> ruRU = {
-  Strings.appName : 'Abu Sahiy Barcode Scanner',
+  Strings.appName : 'Abu Sahiy Delivery app',
 
   ErrorStrings.badRequest : 'Неверный код статуса запроса ',
   ErrorStrings.formatError : 'Ошибка типа формата',

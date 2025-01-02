@@ -1,6 +1,8 @@
 import 'package:delivery_pda/view/connect_postamat/controller/connect_postamat_controller.dart';
 import 'package:delivery_pda/view/login/controller/login_controller.dart';
 import 'package:delivery_pda/view/main/controller/main_controller.dart';
+import 'package:delivery_pda/view/take_post/controller/take_post_controller.dart';
+import 'package:delivery_pda/view/yacheykaga_joylash/controller/yacheykaga_joylash_controller.dart';
 import 'package:get/get.dart';
 import 'data/server/api/api_service.dart';
 import 'data/server/auth_interceptor.dart';
@@ -27,6 +29,8 @@ class DIService {
     Get.lazyPut<LoginController>(() => LoginController(Get.find()), fenix: true);
     Get.lazyPut<MainController>(() => MainController(), fenix: true);
     Get.lazyPut<ConnectPostamatController>(() => ConnectPostamatController(), fenix: true);
+    Get.lazyPut<TakePostController>(() => TakePostController(), fenix: true);
+    Get.lazyPut<YacheykagaJoylashController>(() => YacheykagaJoylashController(), fenix: true);
   }
 
 

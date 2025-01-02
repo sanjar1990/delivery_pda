@@ -5,6 +5,7 @@ import 'package:delivery_pda/view/main/controller/main_controller.dart';
 import 'package:delivery_pda/view/widgets/common_text.dart';
 import 'package:delivery_pda/view/widgets/log_out_dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
@@ -128,13 +129,47 @@ class MainPage extends StatelessWidget {
                       ],
                     ),
                   ),
+                  //Punktdan olish
                   GestureDetector(
-                    onTap: () => Get.toNamed('/connect_postamat'),
+                    onTap: () => Get.toNamed('/take_post'),
                     child: Container(
                       width: double.maxFinite,
                       height: 200,
                       margin:
-                          const EdgeInsets.only(top: 200, left: 20, right: 20),
+                      EdgeInsets.only(top: 20.h, left: 20, right: 20),
+                      padding: const EdgeInsets.all(16),
+                      decoration: BoxDecoration(
+                          color:CommonColors.whiteColor,
+                          borderRadius: BorderRadius.circular(16),
+                          border: Border.all(
+                              color: CommonColors.primaryGrey
+                          )
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          SizedBox(
+                              width: 30.w,
+                              height: 30.h,
+                              child: Image.asset('assets/icons/take_post_icon.png',color: CommonColors.primaryColor,)),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          CommonText(
+                              text: 'Punktdan olib ketish', size: 18)
+                        ],
+                      ),
+                    ),
+                  ),
+                  //Postmanga bog'lanish
+                  GestureDetector(
+                    onTap: () => Get.toNamed('/connect_postamat'),
+                    child: Container(
+                      width: double.maxFinite,
+                      height: 200.h,
+                      margin:
+                           EdgeInsets.only(top: 50.h, left: 20, right: 20),
                       padding: const EdgeInsets.all(16),
                       decoration: BoxDecoration(
                         color:CommonColors.whiteColor,
@@ -147,8 +182,10 @@ class MainPage extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          SvgPicture.asset(
-                              'assets/icons/yacheyka_add_icon.svg'),
+                          SizedBox(
+                              width: 40.w,
+                              height: 40.h,
+                              child: Image.asset('assets/icons/connection_icon.png', color: CommonColors.primaryColor,)),
                           SizedBox(
                             height: 10,
                           ),
@@ -158,6 +195,7 @@ class MainPage extends StatelessWidget {
                       ),
                     ),
                   ),
+
                 ],
               ),
             ),

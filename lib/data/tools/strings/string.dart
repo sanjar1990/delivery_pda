@@ -1,6 +1,6 @@
 
 class Strings {
-  static const appName = 'Abu Sahiy Barcode Scanner';
+  static const appName = 'Abu Sahiy Delivery app';
 
   static const noInternet = 'No internet';
 

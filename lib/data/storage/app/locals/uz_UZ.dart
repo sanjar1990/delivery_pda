@@ -2,7 +2,7 @@ import 'package:delivery_pda/data/server/error_strings.dart';
 import 'package:delivery_pda/data/tools/strings/string.dart';
 
 Map<String, String> uzUZ = {
-     Strings.appName : 'Abu Sahiy Barcode Scanner',
+     Strings.appName : 'Abu Sahiy Delivery app',
 
      ErrorStrings.badRequest : "Noto'g'ri so'rov holati kodi ",
      ErrorStrings.formatError : 'Format turi xatosi',

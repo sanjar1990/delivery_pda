@@ -41,7 +41,7 @@ class RouteHelper {
         transition: Transition.fadeIn),
     GetPage(
         name: connectPostamat,
-        page: () => const ConnectPostamatPage(),
+        page: () =>  ConnectPostamatPage(),
         transition: Transition.fadeIn),
     GetPage(
         name: takePost,

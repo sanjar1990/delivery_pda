@@ -13,8 +13,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 class ConnectPostamatPage extends StatelessWidget {
-  const ConnectPostamatPage({super.key});
-
+   ConnectPostamatPage({super.key});
 
   // Future<void>showDeleteDialog(BuildContext context, int index)async{
   //   print('INN');
@@ -53,10 +52,74 @@ class ConnectPostamatPage extends StatelessWidget {
   //
   // }
 
+  void _showDialog(BuildContext context, ConnectPostamatController controller) {
+    showDialog(
+      context: context,
+      builder: (BuildContext ctx) {
+        return AlertDialog(
+          title: const Text("Yacheykani skaner qiling",
+            style: TextStyle(color: Colors.black),
+            textAlign: TextAlign.center,
+
+          ),
+          content: SizedBox(
+            height: 150,
+            child: Column(
+              children: [
+                const Text(''),
+                ValueListenableBuilder<String>(
+                  valueListenable: controller.lockerCellId,
+                  builder: (context, value, child) {
+                    return Container(
+                      width: MediaQuery.of(context).size.width * 0.7,
+                      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: Colors.white,
+                        border: Border.all(width: 1, color: Colors.grey),
+                      ),
+                      child: Center(
+                        child: Text(
+                          controller.lockerCellId.value,
+                          style: const TextStyle(color: Colors.black, fontSize: 14),
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: const Text("Bekor qilish",style: TextStyle(color: Colors.red),),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            TextButton(
+              child: const Text("Joylash",style: TextStyle(color: CommonColors.primaryColor),),
+              onPressed: () async {
+                if(controller.lockerCellId.value.isNotEmpty){
+                  print('ENTER');
+                  controller.placeOrder();
+                  controller.isLockerCell=false;
+                  Navigator.of(ctx).pop();
+
+                }else{
+                  showErrorToast(context, 'Yacheykani skaner qiling');
+                }
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
   @override
   Widget build(BuildContext context) {
     return GetBuilder<ConnectPostamatController>(
-        init: ConnectPostamatController(),
+        init: ConnectPostamatController(Get.find()),
         builder: (controller) {
           return Scaffold(
             backgroundColor: CommonColors.primaryBackground,
@@ -149,7 +212,9 @@ class ConnectPostamatPage extends StatelessWidget {
                                                     MainAxisAlignment.start,
                                                 children: [
                                                   Row(
-                                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
                                                     children: [
                                                       Expanded(
                                                         child: Container(
@@ -172,99 +237,39 @@ class ConnectPostamatPage extends StatelessWidget {
                                                           ),
                                                         ),
                                                       ),
-                                                      Expanded(
-                                                        child: Container(
-                                                          alignment:
-                                                              Alignment.center,
-                                                          height: 40,
-                                                          decoration: BoxDecoration(
-                                                              color: CommonColors
-                                                                  .primaryColor,
-                                                              border: Border.all(
-                                                                  color: CommonColors
-                                                                      .primaryGrey)),
-                                                          child: CommonText(
-                                                            text: 'Postamat id',
-                                                            size: 20,
-                                                            fontWeight:
-                                                                FontWeight.w600,
-                                                            color: CommonColors
-                                                                .whiteColor,
-                                                          ),
-                                                        ),
-                                                      ),
                                                     ],
                                                   ),
                                                   Container(
                                                     height: 380,
                                                     child: ListView.builder(
                                                         itemCount: controller
-                                                            .postToYacheykaList
-                                                            .length,
-                                                        itemBuilder: (_, index) {
+                                                            .trackIdList.length,
+                                                        itemBuilder:
+                                                            (_, index) {
                                                           final model = controller
-                                                                  .postToYacheykaList[
+                                                                  .trackIdList[
                                                               index];
-                                                          return Row(
-                                                            children: [
-                                                              Expanded(
-                                                                child: Container(
-                                                                  height: 50,
-                                                                  padding:EdgeInsets.only(
-                                                                      left: 6
-                                                                  ),
-                                                                  decoration: BoxDecoration(
-                                                                      color: CommonColors
-                                                                          .whiteColor,
-                                                                      border: Border.all(
-                                                                          color: CommonColors
-                                                                              .primaryGrey)),
-                                                                  child: CommonText(
-                                                                    text: model
-                                                                        .trackId,
-                                                                    size: 16,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w600,
-                                                                    color: CommonColors
-                                                                        .primaryBlackText,
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                              Expanded(
-                                                                child: Container(
-                                                                  height: 50,
-                                                                  padding:EdgeInsets.only(
-                                                                    left: 6
-                                                                  ),
-                                                                  decoration: BoxDecoration(
-
-                                                                      border: Border.all(
-                                                                          color: CommonColors
-                                                                              .primaryGrey)),
-                                                                  child: Row(
-                                                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                                                    children: [
-                                                                      CommonText(
-                                                                        text:
-                                                                            model.yacheyka,
-                                                                        size: 16,
-                                                                        fontWeight:
-                                                                        FontWeight
-                                                                            .w600,
-                                                                        color: CommonColors
-                                                                            .primaryBlackText,
-                                                                      ),
-                                                                      // IconButton(
-                                                                      //     onPressed: (){
-                                                                      //       showDeleteDialog(index);
-                                                                      // }, icon: Icon(Icons.delete))
-                                                                    ],
-                                                                  ),
-                                                                ),
-                                                              ),
-
-                                                            ],
+                                                          return Container(
+                                                            padding:
+                                                                EdgeInsets.only(
+                                                                    left: 6,
+                                                                    right: 6,
+                                                                    top: 8,
+                                                                    bottom: 8),
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              color: CommonColors
+                                                                  .whiteColor,
+                                                            ),
+                                                            child: CommonText(
+                                                              text: model,
+                                                              size: 16,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w600,
+                                                              color: CommonColors
+                                                                  .primaryBlackText,
+                                                            ),
                                                           );
                                                         }),
                                                   )
@@ -275,16 +280,35 @@ class ConnectPostamatPage extends StatelessWidget {
                                           Column(
                                             children: [
                                               controller.isOpenPostamat
-                                                  ?  CustomButton(
-                                          onTap: () async {
-            await controller
-                .disconnectPostamat();
-            Get.back();
-            },
-              text: 'Yakunlash',
-              color: CommonColors
-                  .primaryColorLight,
-            )
+                                                  ? Column(
+                                                      children: [
+                                                        CustomButton(
+                                                          onTap: (){
+                                                            controller.isLockerCell=true;
+                                                            _showDialog(context, controller);
+                                                          },
+                                                          text: 'Joylash',
+                                                          color: CommonColors
+                                                              .primaryColor,
+                                                        ),
+                                                        SizedBox(
+                                                          height: 20,
+                                                        ),
+                                                        if (controller
+                                                            .trackIdList
+                                                            .isEmpty)
+                                                          CustomButton(
+                                                            onTap: () async {
+                                                              await controller
+                                                                  .disconnectPostamat();
+                                                              Get.back();
+                                                            },
+                                                            text: 'Yakunlash',
+                                                            color: CommonColors
+                                                                .primaryColorLight,
+                                                          ),
+                                                      ],
+                                                    )
                                                   : CustomButton(
                                                       onTap: () {
                                                         controller
@@ -295,7 +319,6 @@ class ConnectPostamatPage extends StatelessWidget {
                                               SizedBox(
                                                 height: 20.h,
                                               ),
-
                                             ],
                                           )
                                         ],

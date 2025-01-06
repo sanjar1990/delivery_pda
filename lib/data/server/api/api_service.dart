@@ -3,6 +3,8 @@ import 'package:delivery_pda/domain/entities/bring_courier/bring_courier_request
 import 'package:delivery_pda/domain/entities/bring_courier/bring_courier_response.dart';
 import 'package:delivery_pda/domain/entities/login/login_request.dart';
 import 'package:delivery_pda/domain/entities/login/login_response.dart';
+import 'package:delivery_pda/domain/entities/place_order/place_order_request.dart';
+import 'package:delivery_pda/domain/entities/place_order/place_order_response.dart';
 import 'package:dio/dio.dart';
 import 'package:retrofit/error_logger.dart';
 import 'package:retrofit/http.dart';
@@ -31,5 +33,7 @@ abstract class ApiService {
   Stream<LoginResponse> login(@Body() LoginRequest request);
   @POST(ApiConst.bringCourier)
   Stream<BringCourierResponse> bringCourier(@Body() BringCourierRequest request);
+  @POST(ApiConst.placingOrder)
+  Stream<PlaceOrderResponse> placingOrder(@Body() PlaceOrderRequest request);
 
 }

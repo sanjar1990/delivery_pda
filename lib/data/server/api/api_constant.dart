@@ -20,17 +20,7 @@ class ApiConst{
 
   static const String LOGIN = "locker/service/user/login";
   static const String bringCourier = "locker/cell/order";
-  static const String GET_ORDER_LOCATION_LIST = "pda/location";
-  static const String SAVE_ORDER = "pda/item";
-  static const String POST_LOCATION = "pda/location";
-  static const String POST_UNKNOWN_ORDER = "pda/item/create";
-  static const String searchOrdersByUserId= "pda/item/show/";
-  static const String searchOrdersByTrackID= "pda/item/show/items/";
-  static const String deleteOrderUser= "pda/item/user/";
-  static const String deleteOrders= "pda/item";
-  static const String searchArchiveOrdersByUserId= "pda/item/show/delivered/";
-  static const String getYacheykaByBranchId= "pda/location/";
-  static const String getOrdersByYacheykaId= "pda/location/show/all/";
+  static const String placingOrder = "locker/cell/order/delivered-to-locker";
 
 
 }

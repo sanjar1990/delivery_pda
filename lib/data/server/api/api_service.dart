@@ -1,4 +1,6 @@
 import 'package:delivery_pda/data/server/auth_interceptor.dart';
+import 'package:delivery_pda/domain/entities/bring_courier/bring_courier_request.dart';
+import 'package:delivery_pda/domain/entities/bring_courier/bring_courier_response.dart';
 import 'package:delivery_pda/domain/entities/login/login_request.dart';
 import 'package:delivery_pda/domain/entities/login/login_response.dart';
 import 'package:dio/dio.dart';
@@ -27,5 +29,7 @@ abstract class ApiService {
 
   @POST(ApiConst.LOGIN)
   Stream<LoginResponse> login(@Body() LoginRequest request);
+  @POST(ApiConst.bringCourier)
+  Stream<BringCourierResponse> bringCourier(@Body() BringCourierRequest request);
 
 }

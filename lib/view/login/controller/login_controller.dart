@@ -28,33 +28,7 @@ import 'package:get/get.dart';
      passwordController.dispose();
    }
 
-   Future<void> testLogin() async {
-     print('TEST');
-    String password = passwordController.text.trim();
-     String phone = phoneController.text.trim();
-     //#check internet connectivity
-     if (await CheckNet().checkInternet() == false) {
-       Get.snackbar(Strings.appName.tr, Strings.noInternet.tr);
-       return;
-     }
-     //#check field completeness
-     if(phone.length != 9 || phone.isEmpty){
-       Get.snackbar(Strings.appName.tr, "Telefon raqamda xatolik");
-
-       return;
-     }
-     if(password.isEmpty){
-       Get.snackbar(Strings.appName.tr, "Parolda raqamda xatolik");
-       update();
-       return;
-     }
-      Get.find<PdaHolder>().phone=phoneController.text;
-      Get.find<PdaHolder>().token=phoneController.text;
-      Get.find<PdaHolder>().profileID=99999999999999;
-     Get.offAllNamed('/main_page');
-   }
    Future<void> login() async {
-     print('TEST');
     String password = passwordController.text.trim();
      String phone = phoneController.text.trim();
      //#check internet connectivity
@@ -89,8 +63,9 @@ import 'package:get/get.dart';
                Get.snackbar(Strings.appName.tr, value['msg'].toString());
              } else if (value['ret'] == 0) {
                if (content.data != null) {
-                 // Get.find<PdaHolder>().phone=phoneController.text;
-                 // Get.find<PdaHolder>().token = content.data?.token ?? "";
+                 Get.find<PdaHolder>().phone=phoneController.text;
+                 Get.find<PdaHolder>().userID=content.data?.service_user_id ?? 0;
+                 Get.find<PdaHolder>().token = content.data?.token ?? "";
                  Get.offAllNamed('/main_page');
                } else {
                  Get.snackbar(Strings.appName.tr, value['msg'].toString());

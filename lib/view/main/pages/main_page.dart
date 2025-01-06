@@ -119,7 +119,7 @@ class MainPage extends StatelessWidget {
                               width: 5,
                             ),
                             CommonText(
-                              text: Get.find<PdaHolder>().profileID.toString(),
+                              text: Get.find<PdaHolder>().userID.toString(),
                               color: CommonColors.primaryBlackText,
                               size: 20,
                               fontWeight: FontWeight.w400,

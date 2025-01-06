@@ -55,7 +55,6 @@ Future<void>add()async{
 trackId='';
 yacheykaId='';
 Get.back();
-   print('SSSSSS');
   }else{
     if(yacheykaId.isEmpty){
       Get.snackbar(Strings.appName.tr, "yacheykani scanner qiling ");

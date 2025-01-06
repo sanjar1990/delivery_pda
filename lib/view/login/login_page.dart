@@ -47,14 +47,14 @@ class LoginPage extends StatelessWidget {
                   ),
                   WScaleAnimation(
                     onTap: () async {
-                     controller.testLogin();
-                      // if((controller.phoneController.text.isEmpty ||
-                      //     controller.phoneController.text.length <
-                      //         9) &&
-                      //     controller.passwordController.text.isEmpty){
-                      // }else{
-                      //   await controller.login();
-                      // }
+                     controller.login();
+                      if((controller.phoneController.text.isEmpty ||
+                          controller.phoneController.text.length <
+                              9) &&
+                          controller.passwordController.text.isEmpty){
+                      }else{
+                        await controller.login();
+                      }
                     },
                     child: Container(
                       // padding: padding,

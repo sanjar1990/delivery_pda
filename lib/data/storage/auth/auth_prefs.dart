@@ -11,10 +11,10 @@ class PdaPrefs extends PdaHolder {
 
 
   @override
-  int get profileID => pdaBox.get(profileId, defaultValue: 1);
+  int get userID => pdaBox.get(userId, defaultValue: 1);
 
   @override
-  set profileID(int profileID) => pdaBox.put(profileId, profileID);
+  set userID(int userID) => pdaBox.put(userId, userID);
 
   @override
   String get token => pdaBox.get(tokenId, defaultValue: '');
@@ -58,7 +58,7 @@ class PdaPrefs extends PdaHolder {
 
   static const tokenId = 'token';
   static const pdaBoxID = 'pda_hive_box';
-  static const profileId = 'profileID';
+  static const userId = 'userID';
   static const firstNameId = 'firstName';
   static const lastNameId = 'lastName';
   static const phoneId = 'phone';

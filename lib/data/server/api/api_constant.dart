@@ -19,7 +19,7 @@ class ApiConst{
   };
 
   static const String LOGIN = "locker/service/user/login";
-  static const String GETBRANCHLIST = "pda/branch";
+  static const String bringCourier = "locker/cell/order";
   static const String GET_ORDER_LOCATION_LIST = "pda/location";
   static const String SAVE_ORDER = "pda/item";
   static const String POST_LOCATION = "pda/location";

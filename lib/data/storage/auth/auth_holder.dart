@@ -1,10 +1,9 @@
 
 abstract class PdaHolder {
 
-  late int profileID;
+  late int userID;
   late String token;
   late String phone;
-  late String userId;
   // late String username;
   // late String userId;
   // late String firstName;

@@ -7,8 +7,9 @@ part 'login_data.g.dart';
 class LoginData {
   String? token;
   String? tokeType;
+  int? service_user_id;
 
-  LoginData(this.token, this.tokeType);
+  LoginData(this.token, this.tokeType, this.service_user_id);
 
   factory LoginData.fromJson(Map<String, dynamic> json) =>
   _$LoginDataFromJson(json);
